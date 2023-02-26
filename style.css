@@ -17,8 +17,10 @@ body {
   padding: 1rem;
   border-radius: 5px;
   border: solid 2px black;
+  transition: opacity 200ms ease;
 }
 
 .dragging {
   opacity: 0.5;
+  transition: opacity 1s ease;
 }

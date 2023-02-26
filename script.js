@@ -14,7 +14,6 @@ draggbles.forEach((draggble) => {
 })
 
 containers.forEach((container) => {
-  //for adding dragged box to another container
   container.addEventListener("dragover", () => {
     const dragging = document.querySelector(".dragging")
     container.appendChild(dragging)
