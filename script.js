@@ -14,8 +14,31 @@ draggbles.forEach((draggble) => {
 })
 
 containers.forEach((container) => {
-  container.addEventListener("dragover", () => {
+  container.addEventListener("dragover", function (e) {
+    e.preventDefault()
+    const afterElement = dragAfterElement(container, e.clientY)
     const dragging = document.querySelector(".dragging")
-    container.appendChild(dragging)
+    if (afterElement == null) {
+      container.appendChild(dragging)
+    } else {
+      container.insertBefore(dragging, afterElement)
+    }
   })
 })
+
+function dragAfterElement(container, y) {
+  const draggbleElements = [...container.querySelectorAll(".draggble:not(.dragging)")]
+
+  return draggbleElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect()
+      const offset = y - box.top - box.height / 2
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child }
+      } else {
+        return closest
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element
+}
