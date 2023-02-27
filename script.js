@@ -1,5 +1,5 @@
-const draggbles = document.querySelectorAll(".draggble")
-const containers = document.querySelectorAll(".container")
+const draggbles = document.querySelectorAll(".shallow-draggable")
+const containers = document.querySelectorAll(".draggable-container")
 
 draggbles.forEach((draggble) => {
   //for start dragging costing opacity
@@ -27,7 +27,7 @@ containers.forEach((container) => {
 })
 
 function dragAfterElement(container, y) {
-  const draggbleElements = [...container.querySelectorAll(".draggble:not(.dragging)")]
+  const draggbleElements = [...container.querySelectorAll(".shallow-draggable:not(.dragging)")]
 
   return draggbleElements.reduce(
     (closest, child) => {
