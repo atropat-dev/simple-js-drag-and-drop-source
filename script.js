@@ -12,7 +12,7 @@ draggbles.forEach((draggble) => {
     draggble.classList.remove("dragging")
   })
 })
-
+//shit
 containers.forEach((container) => {
   container.addEventListener("dragover", function (e) {
     e.preventDefault()
